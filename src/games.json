@@ -1,0 +1,44 @@
+[
+  {
+    "id": "starfall",
+    "title": "Starfall Odyssey",
+    "dev": "Orbit Works",
+    "genre": "Action RPG",
+    "year": 2025,
+    "price": 39.99,
+    "discount": 30,
+    "color": ["#1f3a93", "#0a1640"],
+    "description": "Esplora una galassia in rovina tra fazioni in guerra.",
+    "exe": "C:\\Games\\StarfallOdyssey\\Starfall.exe",
+    "cloud": true,
+    "playtime": 42
+  },
+  {
+    "id": "ironverge",
+    "title": "Iron Verge",
+    "dev": "Forgepoint",
+    "genre": "Strategia",
+    "year": 2024,
+    "price": 24.99,
+    "discount": 0,
+    "color": ["#7a3b12", "#2a1206"],
+    "description": "Costruisci città su pianeti vulcanici.",
+    "exe": "C:\\Games\\IronVerge\\IronVerge.exe",
+    "cloud": false,
+    "playtime": 118
+  },
+  {
+    "id": "neondrift",
+    "title": "Neon Drift Ultra",
+    "dev": "Velocity Lab",
+    "genre": "Corse",
+    "year": 2023,
+    "price": 19.99,
+    "discount": 50,
+    "color": ["#c2187a", "#3a0a2a"],
+    "description": "Corse arcade su tracciati illuminati al neon.",
+    "exe": "",
+    "cloud": true,
+    "playtime": 0
+  }
+]

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexus Launcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="backdrop" class="backdrop"></div>
+
+  <header class="topbar">
+    <nav class="sections" id="sections">
+      <button class="section on" data-section="games">Giochi</button>
+      <button class="section" data-section="media">Media</button>
+      <button class="section" data-section="store">Store</button>
+      <button class="section" data-section="library">Libreria</button>
+    </nav>
+    <div class="status">
+      <button class="icon-btn" title="Cerca" id="searchBtn">⌕</button>
+      <button class="icon-btn" title="Impostazioni">⚙</button>
+      <div class="avatar" title="Profilo">N</div>
+      <div class="clock" id="clock"></div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="shelf-wrap">
+      <div class="shelf" id="shelf"></div>
+      <div class="shelf-label" id="shelfLabel"></div>
+    </section>
+
+    <section class="hero" id="hero"></section>
+
+    <section class="stats" id="stats"></section>
+  </main>
+
+  <footer class="bottombar" id="bottombar">
+    <span>← → Scegli</span>
+    <span>Invio Apri</span>
+    <span>Esc Torna indietro</span>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

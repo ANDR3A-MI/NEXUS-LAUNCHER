@@ -1,0 +1,159 @@
+/* ===== TEMA: colori principali ===== */
+:root {
+  --ink: #ffffff;
+  --muted: #b9bec7;
+  --glass: rgba(20, 24, 32, 0.55);
+  --accent: #2b7bff;
+  --radius: 14px;
+  --tile-w: 170px;
+  --tile-h: 230px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #05070b;
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ===== SFONDO: sfumatura che cambia con il gioco selezionato ===== */
+.backdrop {
+  position: fixed; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse at 30% 35%, var(--c1, #1d2a44) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, var(--c2, #0a0f1a) 0%, transparent 55%),
+    #05070b;
+  transition: background 0.6s ease;
+}
+.backdrop::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.75) 100%);
+}
+
+/* ===== BARRA SUPERIORE ===== */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 36px;
+  position: relative; z-index: 2;
+}
+.sections { display: flex; gap: 28px; }
+.section {
+  background: none; border: none; color: var(--muted);
+  font-size: 20px; font-weight: 600; cursor: pointer; padding: 4px 0;
+  border-bottom: 3px solid transparent;
+}
+.section.on { color: var(--ink); border-bottom-color: var(--ink); }
+.section:hover { color: var(--ink); }
+
+.status { display: flex; align-items: center; gap: 22px; }
+.icon-btn {
+  background: none; border: none; color: var(--ink); font-size: 22px; cursor: pointer;
+  width: 36px; height: 36px; border-radius: 50%;
+}
+.icon-btn:hover, .icon-btn:focus-visible { background: rgba(255,255,255,.12); outline: none; }
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, #3b4a66, #1a2233);
+  display: flex; align-items: center; justify-content: center; font-weight: 700;
+}
+.clock { font-size: 16px; color: var(--muted); min-width: 70px; text-align: right; }
+
+/* ===== SCAFFALE ORIZZONTALE ===== */
+.stage { position: relative; height: calc(100% - 140px); padding: 12px 36px 0; }
+
+.shelf-wrap { position: relative; height: 300px; }
+.shelf {
+  display: flex; align-items: flex-end; gap: 18px;
+  height: 100%; overflow-x: auto; overflow-y: visible;
+  scroll-behavior: smooth; padding: 30px 6px 40px;
+  scrollbar-width: none;
+}
+.shelf::-webkit-scrollbar { display: none; }
+
+.tile {
+  flex: 0 0 auto;
+  width: var(--tile-w); height: var(--tile-h);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--c1), var(--c2));
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  display: flex; align-items: flex-end; padding: 14px;
+  font-weight: 700; font-size: 17px; line-height: 1.2;
+  color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,.5);
+  cursor: pointer;
+  transition: transform .25s ease, width .25s ease, height .25s ease, box-shadow .25s ease;
+  position: relative;
+}
+.tile.sel {
+  width: 260px; height: 300px;
+  transform: translateY(-14px);
+  box-shadow: 0 0 0 3px #fff, 0 22px 40px rgba(0,0,0,.6);
+  font-size: 22px;
+}
+.tile.dim:not(.sel) { opacity: .75; }
+
+.tile .badge {
+  position: absolute; top: 10px; right: 10px;
+  font-size: 11px; background: rgba(0,0,0,.45); padding: 3px 7px; border-radius: 8px;
+}
+
+/* Tile fittizia "Aggiungi gioco" */
+.tile.add {
+  background: var(--glass); border: 2px dashed rgba(255,255,255,.35);
+  align-items: center; justify-content: center; text-align: center; color: var(--muted);
+  text-shadow: none; font-size: 15px; font-weight: 600;
+}
+.tile.add.sel { color: #fff; border-color: #fff; }
+
+.shelf-label {
+  position: absolute; left: 6px; top: 0; font-size: 14px; color: var(--muted);
+}
+
+/* ===== BLOCCO CENTRALE ===== */
+.hero { margin-top: 32px; max-width: 760px; }
+.hero .kicker {
+  display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .4px;
+  background: rgba(255,255,255,.14); padding: 5px 12px; border-radius: 6px; margin-bottom: 18px;
+}
+.hero h1 { font-size: 40px; font-weight: 700; margin-bottom: 8px; }
+.hero .sub { color: var(--muted); font-size: 16px; margin-bottom: 26px; }
+
+.buttons { display: flex; gap: 14px; align-items: center; }
+.btn {
+  border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: #fff;
+  padding: 14px 30px; border-radius: 999px; background: rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  transition: transform .15s, background .15s;
+}
+.btn:hover, .btn:focus-visible { background: rgba(255,255,255,.28); transform: scale(1.03); outline: none; }
+.btn.primary { background: #fff; color: #111; }
+.btn.primary:hover { background: #e9ecf2; }
+.btn.more { padding: 14px 20px; }
+
+/* ===== STATISTICHE / CHIP IN BASSO A DESTRA ===== */
+.stats {
+  position: absolute; right: 36px; bottom: 16px;
+  display: flex; gap: 12px; color: var(--muted); font-size: 14px;
+}
+.chip {
+  background: var(--glass); backdrop-filter: blur(10px);
+  padding: 8px 14px; border-radius: 999px;
+}
+
+/* ===== BARRA INFERIORE ===== */
+.bottombar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 40px;
+  display: flex; gap: 28px; align-items: center; padding: 0 36px;
+  background: rgba(0,0,0,.45); color: var(--muted); font-size: 13px;
+  backdrop-filter: blur(8px); z-index: 3;
+}
+
+.toast {
+  position: fixed; top: 80px; right: 36px; z-index: 5;
+  background: var(--glass); backdrop-filter: blur(12px);
+  padding: 12px 18px; border-radius: 10px; font-size: 14px;
+  opacity: 0; transform: translateY(-8px); transition: .3s; pointer-events: none;
+}
+.toast.show { opacity: 1; transform: none; }
